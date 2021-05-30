@@ -46,7 +46,7 @@ while True:
 
     # Upload to S3
     # TODO change the function block to boto3
-    conn = tinys3.Connection(cfg['s3']['AKIA4UAMSQKMB2SDENNG'], cfg['s3']['ELK4V5bztLAsgAFUr+L4O8BabwDVi3RprhQGXaaF'])
+    conn = tinys3.Connection(cfg['s3']['***************'], cfg['s3']['*************************'])
     f = open(filepath, 'rb')             #import tinys3
     conn.upload(filepath, f, cfg['s3']['ukder1'],
                headers={
