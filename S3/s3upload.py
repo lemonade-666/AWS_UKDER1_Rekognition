@@ -11,10 +11,10 @@ subprocess.run(['clear'])
 # TODO tidy up the entire code and reinvent the function documentions
 # this function return the list of objects (files) already existing in the given bucket
 def get_existing_objects(bucket_name):
+    
     existing_objs_list = []
-
     s3_resource = boto3.resource('s3')  # type: botostubs.S3
-
+    
     # get the bucket with name = bucket_name
     bucket = s3_resource.Bucket(bucket_name)
 
@@ -29,12 +29,15 @@ def get_existing_objects(bucket_name):
 
 # the function to upload the file to the given bucket
 def upload_file(file_name, bucket, object_name=None):
-    """Upload a file to an S3 bucket
+    """This function is used to upload file from local machine to AWS S3 bucket
 
-    :param file_name: File to upload
-    :param bucket: Bucket to upload to
-    :param object_name: S3 object name. If not specified then file_name is used
-    :return: True if file was uploaded, else False
+    Args:
+        file_name (string): [description]
+        bucket (string): [description]
+        object_name (string, optional): [description]. Defaults to None.
+
+    Returns:
+        bool: output boolean information to identify whether the file is successfully uploaded
     """
 
     # If S3 object_name was not specified, use file_name
@@ -48,6 +51,7 @@ def upload_file(file_name, bucket, object_name=None):
     except ClientError as e:
         logging.error(e)
         return False
+
     return True
 
 
