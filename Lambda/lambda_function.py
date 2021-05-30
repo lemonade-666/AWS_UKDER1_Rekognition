@@ -2,6 +2,7 @@ import json
 import urllib.parse
 import boto3
 import logging
+import botostubs
 
 
 
@@ -14,7 +15,7 @@ s3 = boto3.client('s3')
 
 def detect_labels(bucket,photo):
     
-    rekog =boto3.client('rekognition')
+    rekog =boto3.client('rekognition') # type: botostubs.rekognition
     response = rekog.detect_labels(Image = {'S3Object' : {'Bucket': bucket, 'Name': photo}},MinConfidence=80,MaxLabels=3)
 
     #keep labels in dictionary
