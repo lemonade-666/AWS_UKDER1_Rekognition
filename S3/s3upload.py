@@ -61,7 +61,7 @@ print('### Utility to Upload files to S3: ###\n')
 
 # getting the list of files to choose from the local computer
 # TODO convert all the back-slash (\) inside of the path string into forward-slash (/)
-path = 'G:\Coding\AWS\AWS_project\Project_Recognito\Image_to_upload'
+path = 'G:\Coding\AWS\AWS_project\AWS_UKDER1_Rekognition\Image_to_upload'
 output = subprocess.run(['ls', path], stdout=subprocess.PIPE, text=True).stdout.split('\n')
 
 # the bucket where the uploads are going to
