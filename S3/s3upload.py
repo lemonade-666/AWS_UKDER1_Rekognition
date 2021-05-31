@@ -4,6 +4,9 @@ from botocore.exceptions import ClientError
 import subprocess
 # TODO learn how to use botostubs properly
 import botostubs
+import os
+import re
+
 
 # TODO adding functional module to allow the code identify which OS it is using and decide the correct shell command
 subprocess.run(['clear'])
@@ -60,8 +63,10 @@ def upload_file(file_name, bucket, object_name=None):
 print('### Utility to Upload files to S3: ###\n')
 
 # getting the list of files to choose from the local computer
-# TODO convert all the back-slash (\) inside of the path string into forward-slash (/)
-path = 'G:\Coding\AWS\AWS_project\AWS_UKDER1_Rekognition\Image_to_upload'
+# TODO convert all the back-slash (\) inside of the path string into forward-slash (/) if the OS is windows
+path = os.path.dirname(os.path.realpath(__file__))
+path = re.sub(r'[^/]*$', '', path)
+path = path + 'Image_to_upload/'
 output = subprocess.run(['ls', path], stdout=subprocess.PIPE, text=True).stdout.split('\n')
 
 # the bucket where the uploads are going to
@@ -91,7 +96,7 @@ if file_option > 0 and file_option <= len(options_list):  # If valid file option
         if not file_name in existing_objs_list:  # if file to upload doesn't exist in the existing_obj_list
             print('\nUploading ' + file_name + '...')
 
-            if upload_file(path + '\\' + file_name, bucket_name, file_name):
+            if upload_file(path + file_name, bucket_name, file_name):
                 print('Upload Successful!')
             else:
                 print('Error trying to upload!')
