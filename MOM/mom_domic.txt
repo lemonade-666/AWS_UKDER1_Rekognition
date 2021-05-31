@@ -1,4 +1,0 @@
-31/05/2021
-1. Hybride cloud computing - TerraForm
-2. automate the infrastructure -- infrastructure as a cloud -- CloudFormation, Serverless
-    2.1 automate the AWS 
