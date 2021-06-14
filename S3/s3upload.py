@@ -14,6 +14,14 @@ subprocess.run(['clear'])
 # TODO tidy up the entire code and reinvent the function documentions
 # this function return the list of objects (files) already existing in the given bucket
 def get_existing_objects(bucket_name):
+    """[this is]
+
+    Args:
+        bucket_name ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
     
     existing_objs_list = []
     s3_resource = boto3.resource('s3')  # type: botostubs.S3
